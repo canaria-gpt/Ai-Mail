@@ -62,7 +62,7 @@ function IndexPage(props) {
             <Title> 어떠세요?</Title>
           </SRow>
           <SubTitle>
-            메일 형식 고민은 이제 그만!{viewportWidth < 768 && <br />} <b>🍯챗팟</b>이 도와드릴게요.
+            메일 형식 고민은 이제 그만!{viewportWidth < 768 && <br />} <b>📧Mail</b>이 도와드릴게요.
           </SubTitle>
         </Rectangle>
         <FooterDiv>
@@ -88,7 +88,7 @@ function IndexPage(props) {
       <Wrapper className={showInfo ? "show" : ""}>
         <WContainer>
           <WRow>
-            <FooterText style={{ fontWeight: "600", fontSize: "20px" }}>🍯 About</FooterText>
+            <FooterText style={{ fontWeight: "600", fontSize: "20px" }}>📧 About</FooterText>
             <Text>
               <b>Ai-Mail</b>은 ChatGPT API를 이용한 메일 형식 변환 서비스입니다.
               프로젝트에 관한 자세한 정보와 개발 로그는{" "}
