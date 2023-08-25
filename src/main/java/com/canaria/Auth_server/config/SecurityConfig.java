@@ -32,6 +32,7 @@ public class    SecurityConfig {
                 .authorizeRequests()
                 //.requestMatchers("/**").authenticated()
                 .requestMatchers("/**").permitAll()
+                .requestMatchers("/chat/show").authenticated()
                 .and().build();
     }
 

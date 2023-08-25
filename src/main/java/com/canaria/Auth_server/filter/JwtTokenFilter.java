@@ -7,7 +7,9 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,7 +28,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     private final String secretKey;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull FilterChain filterChain) throws ServletException, IOException {
         String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         // Header의 Authorization 값이 비어있으면 => Jwt Token을 전송하지 않음 => 로그인 하지 않음
@@ -61,6 +63,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 loginUser.getLoginId(), null);
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
+        System.out.println(authenticationToken.getName());
         // 권한 부여
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         filterChain.doFilter(request, response);

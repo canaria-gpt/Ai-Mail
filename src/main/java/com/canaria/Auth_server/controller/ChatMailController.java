@@ -17,13 +17,20 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/chat")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ChatMailController {
 
     private final ChatService chatService;
     private final UserService userService;
+/*
+    {
+        "chatMail" : "asdadasd",
+        "loginId" : "asdf"
+    }
 
+ */
     @PostMapping("/save")
-    public ResponseEntity<String> saveData(@RequestBody ChatRequest chatRequest){
+    public ResponseEntity<String> saveData(Authentication auth, @RequestBody ChatRequest chatRequest){
         chatService.saveChat(chatRequest);
         return ResponseEntity.ok()
                 .body("채팅 데이터 저장 완료");

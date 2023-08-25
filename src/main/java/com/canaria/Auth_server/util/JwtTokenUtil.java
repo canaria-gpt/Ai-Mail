@@ -9,16 +9,17 @@ import java.util.Date;
 public class JwtTokenUtil {
 
     // JWT Token 발급
-    private static final long ACCESS_TIME =  60 * 1000L;
-    private static final long REFRESH_TIME =  5 * 60 * 1000L;
+    private static final long ACCESS_TIME =  100 * 60 * 1000L;
+    private static final long REFRESH_TIME =  100 * 60 * 1000L;
 
     private static String secretKey= "my-secret-key-123123";
 
-    public static String createToken(String nickname, String type) {
+    public static String createToken(String loginId,String nickname, String type) {
         // Claim = Jwt Token에 들어갈 정보
         // Claim에 loginId를 넣어 줌으로써 나중에 loginId를 꺼낼 수 있음
         Claims claims = Jwts.claims();
         claims.put("nickname", nickname);
+        claims.put("loginId", loginId);
 
         long expireTimeMs = type.equals("Access") ? ACCESS_TIME : REFRESH_TIME;
 

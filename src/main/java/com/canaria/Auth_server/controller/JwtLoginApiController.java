@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/jwt-login")
+@RequestMapping("/auth")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class JwtLoginApiController {
 
     private final UserService userService;
