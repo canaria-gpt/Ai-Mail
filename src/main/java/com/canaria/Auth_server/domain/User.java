@@ -25,5 +25,6 @@ public class User {
     private String nickname;
     private int chatnum;
 
+    private UserRole role;
 
 }
