@@ -10,13 +10,56 @@ const selectOptions = [
   {value: "report", label: "보고서"}
 ];
 
+const BASE_URL = 'http://localhost:8080/chat-gpt';
+
 function MainPage() {
-  const [selectedValue, setSelectedValue] = useState("");
+    const [selectedValue, setSelectedValue] = useState("");
+    const [messages, setMessages] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+
+
+
+
+    const sendQuestion = async () => {
+        if (!inputValue) return;
+
+        const newMessage = {
+          text: inputValue,
+          isUser: true,
+        };
+
+        setMessages([...messages, newMessage]);
+        setInputValue('');
+
+        try {
+          const response = await fetch(`${BASE_URL}/question`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ question: inputValue }),
+          });
+
+          const data = await response.json();
+
+          const responseMessage = {
+            text: data.choices[0].text,
+            isUser: false,
+          };
+
+          setMessages([...messages, responseMessage]);
+        } catch (error) {
+          console.error('Error sending question:', error);
+        }
+      };
+
+
+
 
   return (
     <>
     <GlobalStyle></GlobalStyle>
-    
+
       <Select
         className="selectItem"
         onChange={(e) => setSelectedValue(e.value)}
@@ -31,17 +74,25 @@ function MainPage() {
       <TContainer>
         <InputTextArea placeholder='내용을 입력해주세요'>
         </InputTextArea>
+
+
+
         <OutputButton
           onClick={() => {
-            
+
           }}
         >
+
+
+
+
+
           <BsArrowRight style={{ fontSize: "25px", color: "#f2f0ef" }}></BsArrowRight>
         </OutputButton>
         <OutputTextArea>
         </OutputTextArea>
       </TContainer>
-      
+
     </>
   );
 }
@@ -66,7 +117,7 @@ const GlobalStyle = createGlobalStyle`
      background-color: #352e29;
    }
  `}
-    
+
  @media (min-width: 768px) {
     ${css`
       ::-webkit-scrollbar {

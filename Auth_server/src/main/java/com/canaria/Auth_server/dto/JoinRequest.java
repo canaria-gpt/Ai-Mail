@@ -28,6 +28,7 @@ public class JoinRequest {
                 .loginId(this.loginId)
                 .password(encodedPassword)
                 .nickname(this.nickname)
+                .role(UserRole.USER)
                 .build();
     }
 }

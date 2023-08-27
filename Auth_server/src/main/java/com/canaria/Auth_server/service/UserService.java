@@ -57,8 +57,8 @@ public class UserService {
         }
         // return user;
 
-        TokenDto loginToken = new TokenDto(JwtTokenUtil.createToken(user.getNickname(),"Access"),
-                JwtTokenUtil.createToken(user.getNickname(),"Refresh"));
+        TokenDto loginToken = new TokenDto(JwtTokenUtil.createToken(user.getLoginId(),user.getNickname(),"Access"),
+                JwtTokenUtil.createToken(user.getLoginId(), user.getNickname(),"Refresh"));
 
         Optional<RefreshToken> refreshToken = refreshTokenRepository.findByLoginId(req.getLoginId());
 
