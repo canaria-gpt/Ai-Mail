@@ -27,13 +27,12 @@ function LoginPage() {
 
         const accessToken = response.data.accessToken;
         const refreshToken = response.data.refreshToken;
-
         setCookie("is_login", `${accessToken}`);//"is_login"으로 바꿀것.
         setCookie("is_login2", `${refreshToken}`);//"is_login"으로 바꿀것.
         alert("로그인 성공");
 
         // 로그인 성공 시 mainPage로 이동
-        navigate("/");
+        navigate("/MainPage");
         window.location.reload(); // 새로고침 실행
       } catch (error) {
         alert("로그인 실패");

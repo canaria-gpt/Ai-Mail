@@ -9,7 +9,6 @@ const SignUpPage = () => {
   const [passwordCheck, setPasswordCheck] = useState('');
   const navigate = useNavigate();// 페이지 이동을 위한 navigate
 
-
   const handleSignup = async (e) => {
   e.preventDefault(); // 기본 동작 중단
     try {
@@ -22,12 +21,12 @@ const SignUpPage = () => {
 
       // 회원가입 성공 시 처리
       console.log(response.data);
-      alert("huhi");
+      alert("회원가입 성공");
       navigate("/LoginPage");
 
     } catch (error) {
       console.error('회원가입 실패', error);
-      alert("회원가입 실패");
+      alert("외원가입 실패");
     }
   };
 
