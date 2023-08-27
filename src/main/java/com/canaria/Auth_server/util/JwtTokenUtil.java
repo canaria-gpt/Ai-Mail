@@ -19,8 +19,8 @@ public class JwtTokenUtil {
     private final RefreshTokenRepository refreshTokenRepository;
 
     // JWT Token 발급
-    private static final long ACCESS_TIME =  100 * 60 * 1000L;
-    private static final long REFRESH_TIME =  100 * 60 * 1000L;
+    private static final long ACCESS_TIME =  20 * 60 * 1000L; //유효기간 20분
+    private static final long REFRESH_TIME =  3 * 1440 * 60 * 1000L; //유효기간 3일
 
     private static String secretKey= "my-secret-key-123123";
 
