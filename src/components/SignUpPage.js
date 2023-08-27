@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
-  const handleSignup = async () => {
+  const navigate = useNavigate();// 페이지 이동을 위한 navigate
+
+
+  const handleSignup = async (e) => {
+  e.preventDefault(); // 기본 동작 중단
     try {
       const response = await axios.post('http://localhost:8080/auth/join', {
         loginId,
@@ -17,8 +22,12 @@ const SignUpPage = () => {
 
       // 회원가입 성공 시 처리
       console.log(response.data);
+      alert("회원가입 성공");
+      navigate("/LoginPage");
+
     } catch (error) {
       console.error('회원가입 실패', error);
+      alert("외원가입 실패");
     }
   };
 

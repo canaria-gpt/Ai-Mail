@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../img/ai-logo-1.png";
 
+
 function NavBar() {
   let Navigate = useNavigate();
 
@@ -44,6 +45,12 @@ function NavBar() {
             Navigate("/LoginPage", { state: { direction: "right" } });
           }}>
           <div>로그인</div>
+        </SignInBtn>
+        <SignInBtn
+            onClick={() => {
+                Navigate("/SignUpPage", { state: { direction: "right" } });
+            }}>
+          <div>회원가입</div>
         </SignInBtn>
       </NavBar>
     </>
