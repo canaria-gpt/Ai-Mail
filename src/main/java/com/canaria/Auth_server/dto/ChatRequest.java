@@ -5,6 +5,7 @@ import com.canaria.Auth_server.domain.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.Authentication;
 
 @Getter
 @Setter
@@ -22,9 +23,9 @@ public class ChatRequest {
         this.loginId = loginId;
     }
 
-    public ChatMail toEntity() {
+    public ChatMail toEntity(Authentication auth) {
         return ChatMail.builder()
-                .loginId(this.loginId)
+                .loginId(auth.getName())
                 .mail(this.chatMail)
                 .build();
     }

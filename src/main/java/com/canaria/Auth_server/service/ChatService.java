@@ -5,6 +5,7 @@ import com.canaria.Auth_server.dto.ChatRequest;
 import com.canaria.Auth_server.repository.ChatMailRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public class ChatService {
 
     private final ChatMailRepository chatMailRepository;
 
-    public void saveChat(ChatRequest chatRequest) {
-        chatMailRepository.save(chatRequest.toEntity());
+    public void saveChat(Authentication authentication, ChatRequest chatRequest) {
+        chatMailRepository.save(chatRequest.toEntity(authentication));
     }
 
     public List<ChatRequest> showChat(String loginId) {

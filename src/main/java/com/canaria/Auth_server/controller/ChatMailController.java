@@ -31,7 +31,7 @@ public class ChatMailController {
  */
     @PostMapping("/save")
     public ResponseEntity<String> saveData(Authentication auth, @RequestBody ChatRequest chatRequest){
-        chatService.saveChat(chatRequest);
+        chatService.saveChat(auth,chatRequest);
         return ResponseEntity.ok()
                 .body("채팅 데이터 저장 완료");
     }
