@@ -16,7 +16,7 @@ function LoginPage() {
       e.preventDefault(); // 기본 동작 중단
 
       try {
-        const response = await axios.post('http://localhost:8080/auth/login', {
+        const response = await axios.post('http://20.214.111.0:8080/auth/login', {
           loginId,
           password,
         });

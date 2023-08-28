@@ -7,7 +7,7 @@ import axios from 'axios';
 import { setCookie, getCookie, removeCookie } from './Cookie.js';
 
 
-const BASE_URL = 'http://localhost:8080/chat-gpt';
+const BASE_URL = 'http://20.214.111.0:8081/chat-gpt';
 
 const selectOptions = [
   {value: "mail", label: "이메일"},
@@ -53,13 +53,13 @@ function MainPage() {
 
       const authToken = getCookie("is_login2");
       const api = axios.create({
-          baseURL: 'http://localhost:8080/',
+          baseURL: 'http://20.214.111.0:8080/',
           headers: {
               Authorization: `Bearer ${authToken}`, // 토큰을 헤더에 추가
           },
       });
 
-      api.get('http://localhost:3000')
+      api.get('http://20.214.111.0:80')
           .then(response => {
               console.log('Protected resource response:', response.data);
           })
@@ -71,7 +71,7 @@ function MainPage() {
 
 
         try {
-          const response = await axios.post('http://localhost:8080/chat/save', {
+          const response = await axios.post('http://20.214.111.0:8080/chat/save', {
             messages
           });
 

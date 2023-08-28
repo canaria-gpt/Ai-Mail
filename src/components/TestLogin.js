@@ -6,7 +6,7 @@ import Token from "./Token";
 function TestLogin() {
     // const apiUrl = "http://localhost:8000/user-service/api/login";
     // const apiUrl = "http://localhost:11679/api/signup";
-    const apiUrl = "http://localhost:8080/auth/login";
+    const apiUrl = "http://20.214.111.0:8080/auth/login";
 
     const [formData, setFormData] = useState({
         username: '',

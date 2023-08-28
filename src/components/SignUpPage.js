@@ -14,7 +14,7 @@ const SignUpPage = () => {
   const handleSignup = async (e) => {
   e.preventDefault(); // 기본 동작 중단
     try {
-      const response = await axios.post('http://localhost:8080/auth/join', {
+      const response = await axios.post('http://20.214.111.0/auth/join', {
         loginId,
         password,
         nickname,
