@@ -53,7 +53,7 @@ function MainPage() {
 
       const authToken = getCookie("is_login2");
       const api = axios.create({
-          baseURL: 'http://localhost:8080/',
+          baseURL: 'http://20.214.111.0:8080/',
           headers: {
               Authorization: `Bearer ${authToken}`, // 토큰을 헤더에 추가
           },

@@ -81,9 +81,9 @@ function NavBar() {
                     }}
                     ></StyledImg>
                     <BtnContainer>
-                      <p>
+                      <UserContainer>
                           {`${nickname} 님 환영합니다`}
-                      </p>
+                      </UserContainer>
                       <SignInBtn onClick={handleLogout}>
                         <div>
                           로그아웃
@@ -119,6 +119,15 @@ function NavBar() {
           </NavBar>
       );
   }
+
+const UserContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #352e29;
+  font-weight: 800;
+  font-size: 25px;
+  `
 const BtnContainer = styled.div`
   display: flex;
   gap: 10px;
