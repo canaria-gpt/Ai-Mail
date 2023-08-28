@@ -6,7 +6,6 @@ import IndexPage from './components/IndexPage';
 import MainPage from './components/MainPage';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
-import TestLogin from './components/TestLogin';
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -86,10 +85,10 @@ function App() {
                 }
               />
               <Route
-                path="/TestLogin"
+                path="/NavBar"
                 element={
                   <>
-                    <TestLogin style={{ position: "absolute" }}></TestLogin>
+                    <NavBar style={{ position: "absolute" }}></NavBar>
                   </>
                 }
               />

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-//import { useCookies } from 'react-cookie';
 import { setCookie, getCookie, removeCookie } from './Cookie.js';
-//import AxiosC from './AxiosC';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styled, {createGlobalStyle ,css} from 'styled-components';
+import { Container } from 'react-bootstrap';
 
 
 function LoginPage() {
@@ -27,7 +27,8 @@ function LoginPage() {
 
         const accessToken = response.data.accessToken;
         const refreshToken = response.data.refreshToken;
-        setCookie(loginId, `${accessToken}`);//"is_login"으로 바꿀것.
+        setCookie("is_login", `${accessToken}`);//"is_login"으로 바꿀것.
+        setCookie("is_login2", `${refreshToken}`);//"is_login"으로 바꿀것.
         alert("로그인 성공");
 
         // 로그인 성공 시 mainPage로 이동
@@ -40,27 +41,142 @@ function LoginPage() {
     };
 
     return (
-      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'
-                         , width: '100%', height: '100vh', margin: '30px'}}>
-         <form style={{ display: 'flex', flexDirection: 'column' }}>
-            <input
+      <>
+      <GlobalStyle></GlobalStyle>
+      <TContainer>
+         <form>
+            <LogInForm
               type="text"
               placeholder="아이디"
               value={loginId}
               onChange={(e) => setLoginId(e.target.value)}
             />
             <br/>
-            <input
+            <LogInForm
               type="password"
               placeholder="비밀번호"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
               <br/>
-            <button onClick={handleLogin}>로그인</button>
+            <LogInBtn onClick={handleLogin}>
+              <div>
+                로그인
+              </div>
+            </LogInBtn>
          </form>
-      </div>
+        </TContainer>
+        </>
     );
   }
+
+const GlobalStyle = createGlobalStyle`
+ ${css`
+   ::-webkit-scrollbar {
+     width: 0px;
+   }
+
+   ::-webkit-scrollbar-track {
+     background-color: transparent;
+   }
+
+   ::-webkit-scrollbar-thumb {
+     background-color: #352e29;
+     border-radius: 50px;
+     width: 10px;
+   }
+
+   ::-webkit-scrollbar-thumb:hover {
+     background-color: #352e29;
+   }
+ `}
+    
+ @media (min-width: 768px) {
+    ${css`
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: transparent;
+      }
+    `}
+  }
+`;
+
+  const TContainer = styled(Container)`
+  width: 100%;
+  height: 85%;
+  margin: 0px 0px 0px 0px;
+  justify-content: center;
+  align-items: center;
+
+
+  display: flex;
+
+  @media (min-width: 768px) {
+  }
+`;
+
+const LogInBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f2f0ef;
+  font-weight: 800;
+
+  font-size: 10px;
+  cursor: pointer;
+  gap: 10px;
+
+  background-color: #352e29;
+  border: 3px solid #352e29;
+  border-radius: 80px;
+  padding: 4px 16px;
+  margin-bottom: 10px;
+
+  transition: all 0.5s ease;
+
+  @media (min-width: 768px) {
+    font-size: 25px;
+  }
+
+  &:hover {
+    background-color: #f2f0ef;
+    color: #352e29;
+  }
+`;
+
+const LogInForm = styled.input`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #352e29;
+  font-weight: 800;
+
+  font-size: 10px;
+  gap: 10px;
+
+  background-color: #f2f0ef;
+  border: 3px solid #352e29;
+  border-radius: 80px;
+  padding: 4px 16px;
+  margin-bottom: 10px;
+
+  transition: all 0.5s ease;
+
+  @media (min-width: 768px) {
+    font-size: 25px;
+  }
+`;
+
 
 export default LoginPage;

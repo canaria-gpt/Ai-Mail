@@ -12,19 +12,18 @@ import profile2 from "../img/github.png";
 function IndexPage(props) {
   const Navigate = useNavigate();
   const category = [
-    "교수님",
-    "학생",
-    "부모님",
-    "직장상사",
-    "교수님",
-    "학생",
-    "부모님",
-    "직장상사",
-    "교수님",
-    "학생",
-    "부모님",
-    "직장상사",
-    "교수님",
+    "이메일",
+    "카카오톡",
+    "메신저",
+    "자기소개서",
+    "이메일",
+    "카카오톡",
+    "메신저",
+    "자기소개서",
+    "이메일",
+    "카카오톡",
+    "메신저",
+    "자기소개서",
   ];
 
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
@@ -35,6 +34,7 @@ function IndexPage(props) {
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
     };
+
 
     window.addEventListener("resize", handleResize);
     return () => {
@@ -48,7 +48,6 @@ function IndexPage(props) {
       <SContainer>
         <Rectangle>
           <SRow>
-            <Title>이메일 대상</Title>
             <StyeldTypeit
               getBeforeInit={(instance) => {
                 for (let i = 0; i <= 50; i++) {
@@ -59,10 +58,10 @@ function IndexPage(props) {
               }}
               options={{ loop: true, speed: 130 }}
             />
-            <Title> 어떠세요?</Title>
+            <Title> 문장 교정은 어떠세요?</Title>
           </SRow>
           <SubTitle>
-            메일 형식 고민은 이제 그만!{viewportWidth < 768 && <br />} <b>📧Mail</b>이 도와드릴게요.
+            이과생들의 절망적인 어휘력!{viewportWidth < 768 && <br />} <b>📧AI-Mail</b>이 도와드릴게요.
           </SubTitle>
         </Rectangle>
         <FooterDiv>
@@ -90,7 +89,7 @@ function IndexPage(props) {
           <WRow>
             <FooterText style={{ fontWeight: "600", fontSize: "20px" }}>📧 About</FooterText>
             <Text>
-              <b>Ai-Mail</b>은 ChatGPT API를 이용한 메일 형식 변환 서비스입니다.
+              <b>Ai-Mail</b>은 ChatGPT API를 이용한 문장 교정 서비스입니다.
               프로젝트에 관한 자세한 정보와 개발 로그는{" "}
               <b
                 style={{ textDecoration: "underLine", cursor: "pointer" }}
@@ -107,7 +106,7 @@ function IndexPage(props) {
             <FooterText style={{ fontWeight: "600", fontSize: "20px" }}>🧑🏻‍💻 Credit</FooterText>
             <WImg src={profile1} style={{ borderRadius: "50%" }} />
             <Text style={{ fontSize: "20px", marginBottom: "40px" }}>
-              백준원() {""}
+              백준원(Junwon) {""}
               <span
                 style={{
                   fontSize: "10px",
@@ -131,10 +130,10 @@ function IndexPage(props) {
               <div
                 style={{ fontSize: "13px", margin: "10px 0px", cursor: "pointer" }}
                 onClick={() => {
-                  window.open("", "_blank");
+                  window.open("https://velog.io/@joonwon97", "_blank");
                 }}
               >
-                <BsGlobe />
+                <BsGlobe /> https://velog.io/@joonwon97
               </div>
             </Text>
 
@@ -161,13 +160,53 @@ function IndexPage(props) {
               >
                 <BsGithub /> https://github.com/leehyeondol
               </div>
+            </Text>
+            <WImg src={profile2} style={{ borderRadius: "50%" }} />
+            <Text style={{ fontSize: "20px", marginBottom: "40px" }}>
+              신승용 (Seungyong) {""}
+              <span
+                style={{
+                  fontSize: "10px",
+                  fontWeight: "900",
+                  padding: "5px 10px",
+                  backgroundColor: "#352e29",
+                  borderRadius: "10px",
+                  color: "#f2f0ef",
+                }}
+              >
+                Backend
+              </span>
               <div
                 style={{ fontSize: "13px", margin: "10px 0px", cursor: "pointer" }}
                 onClick={() => {
-                  window.open("", "_blank");
+                  window.open("https://github.com/sso9594", "_blank");
                 }}
               >
-                <BsGlobe /> 
+                <BsGithub /> https://github.com/sso9594
+              </div>
+            </Text>
+            <WImg src={profile2} style={{ borderRadius: "50%" }} />
+            <Text style={{ fontSize: "20px", marginBottom: "40px" }}>
+              하지민 (Jimin) {""}
+              <span
+                style={{
+                  fontSize: "10px",
+                  fontWeight: "900",
+                  padding: "5px 10px",
+                  backgroundColor: "#352e29",
+                  borderRadius: "10px",
+                  color: "#f2f0ef",
+                }}
+              >
+                Backend
+              </span>
+              <div
+                style={{ fontSize: "13px", margin: "10px 0px", cursor: "pointer" }}
+                onClick={() => {
+                  window.open("https://github.com/hajimin1", "_blank");
+                }}
+              >
+                <BsGithub /> https://github.com/hajimin1
               </div>
             </Text>
           </WRow>
